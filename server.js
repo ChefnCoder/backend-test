@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-  origin: 'https://rule-engine-tanmay.netlify.app', // Replace with your Netlify domain
+  origin: 'https://weather-monitoring-tanmay.netlify.app/', // Replace with your Netlify domain
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true, // Allow cookies and credentials if needed
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
