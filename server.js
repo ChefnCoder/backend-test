@@ -12,13 +12,22 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-  origin: 'https://weather-monitoring-tanmay.netlify.app/', // Replace with your Netlify domain
+  origin: 'https://weather-monitoring-tanmay.netlify.app', // Replace with your Netlify domain
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true, // Allow cookies and credentials if needed
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
 };
 
 app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://weather-monitoring-tanmay.netlify.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 
 app.use(express.json());
 app.use('/api/weather', weatherRoutes);  // Ensure this is correctly set up
