@@ -11,7 +11,15 @@ dotenv.config();  // Load environment variables from .env
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: 'https://rule-engine-tanmay.netlify.app', // Replace with your Netlify domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true, // Allow cookies and credentials if needed
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use('/api/weather', weatherRoutes);  // Ensure this is correctly set up
 
