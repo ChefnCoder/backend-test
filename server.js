@@ -21,14 +21,14 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Schedule a job to run every 5 minutes to fetch and store weather data
-cron.schedule('* * * * *', () => {
+cron.schedule('*/5 * * * *', () => {
   console.log('Fetching weather data for cities every 5 minutes...');
   getWeatherForCities();  // Call the function from the controller to fetch data
 });
 
 
 // Schedule a job to run at midnight to calculate and store daily summaries
-cron.schedule('* * * * *', async () => { 
+cron.schedule('*/5 * * * *', async () => { 
   console.log('Calculating and saving daily weather summaries...');
   
   try {
